@@ -1,11 +1,18 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import studentRouter from './routers/studentRouter.js'
+import authenticate from './middlewares/authenticate.js'
+import productRouter from './routers/productRouter.js'
+import dotenv from "dotenv"
+import cors from "cors"
+import orderRouter from './routers/orderRouter.js'
+
+dotenv.config()
 
 
-const mongoDBURL = "mongodb+srv://admin:20030529@cluster0.wu0owth.mongodb.net/dev?appName=Cluster0"
+const mongoDBURI = process.env.MONGO_URI
 
-mongoose.connect(mongoDBURL).then(   // then mean like promises 
+mongoose.connect(mongoDBURI).then(   // then mean like promises 
     ()=>{
         console.log("Connected to MongoDB successfully")
     }
